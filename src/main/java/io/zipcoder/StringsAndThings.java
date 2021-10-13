@@ -17,11 +17,26 @@ public class StringsAndThings {
 
 
     public Integer countYZ(String input) {
-        int count = 0;
+
+
+        String[] words = input.split(" ");
+        Integer numOfWords = 0;
+
+        for (String word : words) {
+            if (word.charAt(word.length() - 1) == 'y' || word.charAt(word.length() - 1) == 'z') {
+                numOfWords++;
+            }
+        }
+        return numOfWords;
+    }
+
+
+
+        /*int count = 0;
         String[] theArray = input.split(" ");
         for (int i = 0; i < theArray.length; i++) {
             String words = theArray[i];
-            int numCharact = words.length();
+            int numCharact = words.length();              // THIS ALSO WORKS
             int lastIndex = numCharact - 1;
             char lastChar = words.charAt(lastIndex);
             if (lastChar == 'y' || lastChar == 'z') {
@@ -31,8 +46,11 @@ public class StringsAndThings {
         }
 
 
-        return count;
-    }
+        return count;*/
+
+
+
+    //}
 
     /**
      * Given two strings, base and remove, return a version of the base string where all instances of the remove string have
@@ -45,12 +63,7 @@ public class StringsAndThings {
      */
     public String removeString(String base, String remove) {
 
-   return base.replace(remove, "");
-
-
-
-    //return null;
-
+          return base.replace(remove, "");
 
 
 
@@ -70,21 +83,14 @@ Integer theNot = 0;
 
 for (int theChar = 0;  theChar < input.length() -1;  theChar ++ ) {
 
-
-    if (input.charAt(theChar) == 'i' && input.charAt(theChar + 1) == 's') {
+    if (input.charAt(theChar) == 'i' && input.charAt(theChar + 1) == 's') { // esas letras tiene "is" (la i y s)
         theIs++;
-
     }
-    
-    if (input.charAt(theChar) == 'n' && input.charAt(theChar + 1) == 'o' &&
+    if (input.charAt(theChar) == 'n' && input.charAt(theChar + 1) == 'o' && // estas tiene "not" (n y o y t)
             input.charAt(theChar + 2) == 't') {
         theNot++;
-
     }
-
-
 }
-
         return theIs.equals(theNot);
     }
 
@@ -97,18 +103,26 @@ for (int theChar = 0;  theChar < input.length() -1;  theChar ++ ) {
      */
     public Boolean gIsHappy(String input) {
 
-
-            return input.contains("gg");
-/*int counter = 0;
-int gIsHappy = 0;
- for (int i = 0; i < in < input.length() -1; i++){
-     if (input.charAt(i) == 'g' && input.length() -1 )*/
-
-
-
-
-            //return input.contains("gg");
+        Boolean gIsHappy = false;
+           for (int i = 0; i < input.length() - 1; i++) {
+               if (input.charAt(i) == 'g' && input.charAt(i + 1) == 'g') {
+                   gIsHappy = true;
+                       //break;
+            }
+        }
+        return gIsHappy;
     }
+
+        /*return input.contains("gg");
+     int counter = 0;
+     int gIsHappy = 0;
+            for (int i = 0; i  < input.length() -1; i++){
+                 if (input.charAt(i) == 'g' && input.length() -1 )
+                  //if (input.charAt(i) == 'g' && input.charAt(i + 1) == 'g') {
+
+
+
+            return input.contains("gg");*/
 
 
     /**
@@ -127,15 +141,14 @@ int gIsHappy = 0;
                 counter++;
             }
     }
-
         return counter;
-
-    } //
-
-
+    }
+}
 
     ///
-}
+
+
+
 
 
 
