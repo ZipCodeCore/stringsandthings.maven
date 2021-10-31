@@ -8,11 +8,6 @@ import java.util.Locale;
  */
 public class StringsAndThings {
 
-    public static void main(String[] args) {
-        StringsAndThings s = new StringsAndThings();
-        System.out.println(s.containsEqualNumberOfIsAndNot("thisisnotno"));
-    }
-
     /**
      * Given a string, count the number of words ending in 'y' or 'z' -- so the 'y' in "heavy" and the 'z' in "fez" count,
      * but not the 'y' in "yellow" (not case sensitive). We'll say that a y or z is at the end of a word if there is not an alphabetic
@@ -63,19 +58,20 @@ public class StringsAndThings {
      *           containsEqualNumberOfIsAndNot("noisxxnotyynotxisi") // Should return true
      */
     public Boolean containsEqualNumberOfIsAndNot(String input){
-
+        //convert string to a character array
         char[] isAndNot = input.toLowerCase().toCharArray();
-        System.out.println(isAndNot);
 
+        //counters for 'is' and 'not' to later compare for Boolean
         Integer isCount = 0;
         Integer notCount = 0;
 
+        //check to see if sequence of chars 'i' and 's' and if so, increase isCount
         for (int i = 0; i < isAndNot.length-1; i++) {
             if (input.charAt(i) == 'i' && input.charAt(i + 1) == 's') {
                 isCount++;
             }
         }
-
+        //check to see if sequence of chars 'n', 'o', 't', and if so, increase notCount
         for (int i = 0; i < isAndNot.length-2; i++) {
             if (input.charAt(i) == 'n' && input.charAt(i+1) == 'o' && input.charAt(i+2) == 't') {
                 notCount++;
@@ -92,8 +88,15 @@ public class StringsAndThings {
      *           gHappy("xxgxx") // Should return  false
      *           gHappy("xxggyygxx") // Should return  false
      */
-    public Boolean gIsHappy(String input){
-        return null;
+    public Boolean gIsHappy(String input) {
+
+        for (int i = 1; i < input.length()-1; i++) {
+            if((input.charAt(i) == 'g' && input.charAt(i+1) != 'g')
+                    && (input.charAt(i) == 'g' && input.charAt(i-1) != 'g')) {
+                return false;
+            }
+        }
+        return true;
     }
 
 
