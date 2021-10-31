@@ -10,8 +10,7 @@ public class StringsAndThings {
 
     public static void main(String[] args) {
         StringsAndThings s = new StringsAndThings();
-        System.out.println(s.removeString("Hello there", "llo"));
-
+        System.out.println(s.containsEqualNumberOfIsAndNot("thisisnotno"));
     }
 
     /**
@@ -52,7 +51,7 @@ public class StringsAndThings {
      */
     public String removeString(String base, String remove){
 
-        return base.replaceAll(remove, "");
+        return base.replaceAll(remove, ""); //replaces remove string with empty string
     }
 
     /**
@@ -64,7 +63,26 @@ public class StringsAndThings {
      *           containsEqualNumberOfIsAndNot("noisxxnotyynotxisi") // Should return true
      */
     public Boolean containsEqualNumberOfIsAndNot(String input){
-        return null;
+
+        char[] isAndNot = input.toLowerCase().toCharArray();
+        System.out.println(isAndNot);
+
+        Integer isCount = 0;
+        Integer notCount = 0;
+
+        for (int i = 0; i < isAndNot.length-1; i++) {
+            if (input.charAt(i) == 'i' && input.charAt(i + 1) == 's') {
+                isCount++;
+            }
+        }
+
+        for (int i = 0; i < isAndNot.length-2; i++) {
+            if (input.charAt(i) == 'n' && input.charAt(i+1) == 'o' && input.charAt(i+2) == 't') {
+                notCount++;
+            }
+        }
+
+        return isCount.equals(notCount);
     }
 
     /**
