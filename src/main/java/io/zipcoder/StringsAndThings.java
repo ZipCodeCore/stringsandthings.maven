@@ -1,10 +1,18 @@
 package io.zipcoder;
 
 
+import java.util.Locale;
+
 /**
  * @author tariq
  */
 public class StringsAndThings {
+
+    public static void main(String[] args) {
+        StringsAndThings s = new StringsAndThings();
+        System.out.println(s.countYZ("pay day"));
+
+    }
 
     /**
      * Given a string, count the number of words ending in 'y' or 'z' -- so the 'y' in "heavy" and the 'z' in "fez" count,
@@ -14,8 +22,23 @@ public class StringsAndThings {
      *           countYZ("day fez"); // Should return 2
      *           countYZ("day fyyyz"); // Should return 2
      */
-    public Integer countYZ(String input){
-        return null;
+    public Integer countYZ(String input) {
+        Integer counter = 0; //counter for loop
+        String[] wordsArray = input.toLowerCase().split(" "); //split string up into words by delimiter "space", ignoring case
+
+        //for the length of the array, check the last letter in each individual word of the wordsArray and compare to y or z
+        //if either y or z are found, increase the counter by 1
+        for (int i = 0; i < wordsArray.length; i++) {
+            String wordyz = wordsArray[i];
+            int len = wordyz.length()-1;
+
+            if (Character.isLetter(wordyz.charAt(len))) {
+                if (wordyz.charAt(len) == 'y' || (wordyz.charAt(len) == 'z')) {
+                    counter++;
+                }
+            }
+        }
+        return counter;
     }
 
     /**
@@ -28,7 +51,8 @@ public class StringsAndThings {
      *           removeString("Hello there", "x") // Should return "Hello there"
      */
     public String removeString(String base, String remove){
-        return null;
+
+        return base.replaceAll(base, remove);
     }
 
     /**
