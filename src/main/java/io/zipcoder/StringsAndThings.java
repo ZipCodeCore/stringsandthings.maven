@@ -1,6 +1,11 @@
 package io.zipcoder;
 
 
+import com.sun.org.apache.xpath.internal.operations.Bool;
+
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 /**
  * @author tariq
  */
@@ -15,7 +20,14 @@ public class StringsAndThings {
      *           countYZ("day fyyyz"); // Should return 2
      */
     public Integer countYZ(String input){
-        return null;
+        String[] wordsOfString = input.split(" ");
+        int counter = 0;
+        for (int i = 0; i < wordsOfString.length; i++) {
+           if (wordsOfString[i].endsWith("y") || wordsOfString[i].endsWith("z")) {
+               counter++;
+           }
+        }
+        return counter;
     }
 
     /**
@@ -28,7 +40,7 @@ public class StringsAndThings {
      *           removeString("Hello there", "x") // Should return "Hello there"
      */
     public String removeString(String base, String remove){
-        return null;
+        return base.replace(remove, "");
     }
 
     /**
@@ -40,7 +52,19 @@ public class StringsAndThings {
      *           containsEqualNumberOfIsAndNot("noisxxnotyynotxisi") // Should return true
      */
     public Boolean containsEqualNumberOfIsAndNot(String input){
-        return null;
+        int inputLength = input.length(); //11
+
+        String inputWithoutIs = removeString(input, "is"); //"th  not"
+        int inputWOLength = inputWithoutIs.length(); //7
+        int diffOfIs = inputLength - inputWOLength; //11-7 = 4
+        int numberOfIs = diffOfIs/2; //4/2 2 is the size of "is"
+
+        String inputWithoutNot = removeString(input, "not"); //"this is "
+        int inputWONotLength = inputWithoutNot.length(); //8
+        int diffOfNot = inputLength - inputWONotLength; // 11-8 = 3
+        int numberOfNot = diffOfNot/3; //3/3 =1 3 is the size of "not"
+
+        return numberOfIs == numberOfNot;
     }
 
     /**
@@ -51,7 +75,15 @@ public class StringsAndThings {
      *           gHappy("xxggyygxx") // Should return  false
      */
     public Boolean gIsHappy(String input){
-        return null;
+        //check if g  is to the left or right
+        boolean isGHappy = false;
+        Pattern ggs = Pattern.compile("gg");
+        Matcher foundGG = ggs.matcher(input);
+        if (foundGG.find()) {
+            String goodbyeGG = removeString(input, "gg");
+            isGHappy = !goodbyeGG.contains("g");
+        }
+        return isGHappy; //returning true or false
     }
 
 
@@ -63,6 +95,13 @@ public class StringsAndThings {
      *            countTriple("a") // Should return 0
      */
     public Integer countTriple(String input){
-        return null;
+        int counter = 0;
+        for (int i = 0; i < input.length() - 2; i++) {
+            if (input.charAt(i) == input.charAt(i + 1) && (input.charAt(i + 1) == input.charAt(i + 2))) {
+                counter++;
+            }
+
+        }
+        return counter;
     }
 }
