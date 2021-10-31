@@ -10,7 +10,7 @@ public class StringsAndThings {
 
     public static void main(String[] args) {
         StringsAndThings s = new StringsAndThings();
-        System.out.println(s.countYZ("pay day"));
+        System.out.println(s.removeString("Hello there", "llo"));
 
     }
 
@@ -52,7 +52,7 @@ public class StringsAndThings {
      */
     public String removeString(String base, String remove){
 
-        return base.replaceAll(base, remove);
+        return base.replaceAll(remove, "");
     }
 
     /**
