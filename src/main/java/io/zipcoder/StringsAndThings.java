@@ -15,10 +15,28 @@ public class StringsAndThings {
      * countYZ("day fez"); // Should return 2
      * countYZ("day fyyyz"); // Should return 2
      */
-    public Integer countYZ(String input) {
-
-
-        return null;
+    public Integer countYZ(String input){
+        // create a count variable
+        int count = 0;
+        // break down into individual words
+        String[] words = input.split(" ");
+        // for each word in words
+        for(String word : words) {
+            // get length of word
+            int lengthOfWord = word.length();
+            // get all letters of word
+            char[] allLettersOfWord = word.toCharArray();
+            // get last index
+            int lastIndex = lengthOfWord - 1;
+            // get last letter of word
+            char lastLetter = allLettersOfWord[lastIndex];
+            // if the last letter is y or z
+            if (lastLetter == 'y' || lastLetter == 'z') {
+                // increase counter by 1
+                count += 1;
+            }
+        }
+        return count;
     }
 
     /**
@@ -61,7 +79,7 @@ public class StringsAndThings {
 
         for (int i = 0; i < inputArray.length; i++) {
             if (inputArray[i] == 'g') {
-                if (inputArray[i-1] != 'g' || inputArray[i+1] != 'g'){
+                if (inputArray[i - 1] != 'g' || inputArray[i + 1] != 'g') {
                     return false;
                 }
             }
