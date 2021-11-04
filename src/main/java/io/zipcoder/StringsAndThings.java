@@ -98,9 +98,22 @@ public class StringsAndThings {
      * countTriple("a") // Should return 0
      */
     public Integer countTriple(String input) {
-        // convert string to char
-        // inputArray[i-1] != 'g' || inputArray[i+1] != 'g' something like this
-        return null;
+        int counter = 0;
+        char[] inputArray = input.toCharArray();
+
+        for(int i = 1; i < input.length()-1; i++) {
+
+           if (inputArray[i] == inputArray[i-1] && inputArray[i] == inputArray[i+1]) {
+               counter = counter + 1;
+           }
+        }
+
+        return counter;
+
+
+
+
+
     }
 }
 
