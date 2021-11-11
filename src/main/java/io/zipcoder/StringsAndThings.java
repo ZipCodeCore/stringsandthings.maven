@@ -1,6 +1,7 @@
 package io.zipcoder;
 
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 /**
@@ -18,6 +19,22 @@ public class StringsAndThings {
      * countYZ("day fyyyz"); // Should return 2
      */
     public Integer countYZ(String input) {
+
+//        String input = "day fyyyz";
+//        Integer expected = 2;
+
+//        Integer counter = 0;
+//
+//        // created new arraylist called fullString
+//       StringBuilder fullString = new StringBuilder(input + " ");
+//
+//        // looped through input.toCharArray and added each character to fullString
+//        for (int i = 0; i < fullString.length(); i++) { // TODO continue on
+//
+//
+//            }
+
+
         // create a count variable
         int count = 0;
         // break down into individual words
@@ -66,13 +83,34 @@ public class StringsAndThings {
      */
     public Boolean containsEqualNumberOfIsAndNot(String input) {
 
-        // called above method to help
-        // removed instances of is and not, then divided by 2 and 3 respectively
-        // that will effectively give you the number of is and nots
-        // then you can compare them to each other
-        int isCount = (input.length() - removeString(input, "is").length()) / 2;
-        int notCount = (input.length() - removeString(input, "not").length()) / 3;
-        return isCount == notCount;
+        // below is another attempt at this problem
+        Integer length = input.length();
+        Integer withoutIs = input.replace("is", "").length();
+        Integer withoutNot = input.replace("not", "").length();
+
+        Integer howManyIs = (length - withoutIs) / 2;
+        Integer howManyNot = (length - withoutNot) / 3;
+
+        if (howManyIs == howManyNot) {
+            return true;
+        }
+
+        return false;
+
+
+        // below is original attempt at this problem
+        // called removeString method from above to help solve
+
+
+//        // called above method to help
+//        // removed instances of is and not, then divided by 2 and 3 respectively
+//        // that will effectively give you the number of is and nots
+//        // then you can compare them to each other
+
+
+//        int isCount = (input.length() - removeString(input, "is").length()) / 2;
+//        int notCount = (input.length() - removeString(input, "not").length()) / 3;
+//        return isCount == notCount;
     }
 
     /**
