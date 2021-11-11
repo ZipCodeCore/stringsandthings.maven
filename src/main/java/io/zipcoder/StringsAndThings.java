@@ -17,13 +17,13 @@ public class StringsAndThings {
      * countYZ("day fez"); // Should return 2
      * countYZ("day fyyyz"); // Should return 2
      */
-    public Integer countYZ(String input){
+    public Integer countYZ(String input) {
         // create a count variable
         int count = 0;
         // break down into individual words
         String[] words = input.split(" ");
         // for each word in words
-        for(String word : words) {
+        for (String word : words) {
             // get length of word
             int lengthOfWord = word.length();
             // get all letters of word
@@ -116,23 +116,45 @@ public class StringsAndThings {
      * countTriple("a") // Should return 0
      */
     public Integer countTriple(String input) {
-        // create counter
+
         int counter = 0;
-        // turn string to char[] so we can use index
-        char[] inputArray = input.toCharArray();
-        // for loop to iterate through
-        for(int i = 1; i < input.length()-1; i++) {
-        // if statement checking if letter is the same both before and after
-           if (inputArray[i] == inputArray[i-1] && inputArray[i] == inputArray[i+1]) {
-               // if so, increase counter by one
-               counter = counter + 1;
-           }
+        char[] array = input.toCharArray();
+
+        // for middle part of for loop you can use array.length - 1 like i did here
+        // or you could use input.length() - 1;
+        // either will work fine. they are just different ways to say the same thing
+        // we converted input to array, so they will be same length
+        for (int i = 1; i < array.length - 1; i++) {
+
+            // created a variable for easier conditions in if statement
+            char c = array[i];
+
+            // you can use c here. or array[i] since they are equal things
+            // here i used both to demonstrate that either reference would work
+            if ((c == (array[i - 1])) && (c == (array[i + 1]))) {
+                counter++;
+            }
+
         }
-        // after loop exits, return counter
+
         return counter;
 
 
-
+        // below is the original way i completed this problem. above is simply another attempt at it.
+//        // create counter
+//        int counter = 0;
+//        // turn string to char[] so we can use index
+//        char[] inputArray = input.toCharArray();
+//        // for loop to iterate through
+//        for(int i = 1; i < input.length()-1; i++) {
+//        // if statement checking if letter is the same both before and after
+//           if (inputArray[i] == inputArray[i-1] && inputArray[i] == inputArray[i+1]) {
+//               // if so, increase counter by one
+//               counter = counter + 1;
+//           }
+//        }
+//        // after loop exits, return counter
+//        return counter;
 
 
     }
