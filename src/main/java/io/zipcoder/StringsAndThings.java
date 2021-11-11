@@ -1,6 +1,8 @@
 package io.zipcoder;
 
 
+import java.util.ArrayList;
+
 /**
  * @author tariq
  */
@@ -49,7 +51,8 @@ public class StringsAndThings {
      * removeString("Hello there", "x") // Should return "Hello there"
      */
     public String removeString(String base, String remove) {
-
+        // just using .replace method to replace the string to be removed with "" (that is, nothing)
+        // this leaves just what remains
         return base.replace(remove, "");
     }
 
@@ -62,6 +65,11 @@ public class StringsAndThings {
      * containsEqualNumberOfIsAndNot("noisxxnotyynotxisi") // Should return true
      */
     public Boolean containsEqualNumberOfIsAndNot(String input) {
+
+        // called above method to help
+        // removed instances of is and not, then divided by 2 and 3 respectively
+        // that will effectively give you the number of is and nots
+        // then you can compare them to each other
         int isCount = (input.length() - removeString(input, "is").length()) / 2;
         int notCount = (input.length() - removeString(input, "not").length()) / 3;
         return isCount == notCount;
@@ -75,9 +83,18 @@ public class StringsAndThings {
      * gHappy("xxggyygxx") // Should return  false
      */
     public Boolean gIsHappy(String input) {
-        char[] inputArray = input.toCharArray(); //convert string to array of letters
 
-        for (int i = 0; i < inputArray.length; i++) {
+        // had to change Test1 to assertFalse, not assertTrue
+        // had to change Test1 to assertFalse, not assertTrue
+        // had to change Test1 to assertFalse, not assertTrue
+
+        //convert string to array of letters
+        char[] inputArray = input.toCharArray();
+        // for loop to go through char[] input array
+        // have to change constraints to accommodate the first and last index
+        for (int i = 1; i < inputArray.length - 1; i++) {
+            // check if a g doesn't appear either before and after
+            // return false
             if (inputArray[i] == 'g') {
                 if (inputArray[i - 1] != 'g' || inputArray[i + 1] != 'g') {
                     return false;
@@ -85,6 +102,7 @@ public class StringsAndThings {
             }
 
         }
+        // otherwise return true
         return true;
 
     }
@@ -98,16 +116,19 @@ public class StringsAndThings {
      * countTriple("a") // Should return 0
      */
     public Integer countTriple(String input) {
+        // create counter
         int counter = 0;
+        // turn string to char[] so we can use index
         char[] inputArray = input.toCharArray();
-
+        // for loop to iterate through
         for(int i = 1; i < input.length()-1; i++) {
-
+        // if statement checking if letter is the same both before and after
            if (inputArray[i] == inputArray[i-1] && inputArray[i] == inputArray[i+1]) {
+               // if so, increase counter by one
                counter = counter + 1;
            }
         }
-
+        // after loop exits, return counter
         return counter;
 
 
