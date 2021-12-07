@@ -20,20 +20,6 @@ public class StringsAndThings {
      */
     public Integer countYZ(String input) {
 
-//        String input = "day fyyyz";
-//        Integer expected = 2;
-
-//        Integer counter = 0;
-//
-//        // created new arraylist called fullString
-//       StringBuilder fullString = new StringBuilder(input + " ");
-//
-//        // looped through input.toCharArray and added each character to fullString
-//        for (int i = 0; i < fullString.length(); i++) { // TODO continue on
-//
-//
-//            }
-
 
         // create a count variable
         int count = 0;
@@ -83,22 +69,35 @@ public class StringsAndThings {
      */
     public Boolean containsEqualNumberOfIsAndNot(String input) {
 
-        // below is another attempt at this problem
-        Integer length = input.length();
-        Integer withoutIs = input.replace("is", "").length();
-        Integer withoutNot = input.replace("not", "").length();
 
-        Integer howManyIs = (length - withoutIs) / 2;
-        Integer howManyNot = (length - withoutNot) / 3;
+        // another attempt a month later
+        int length = input.length();
 
-        if (howManyIs == howManyNot) {
+        int allTheIs = length - input.replace("is", "").length();
+        int allTheNot = length - input.replace("not", "").length();
+
+        if ((allTheIs * 3) == (allTheNot * 2)) {
             return true;
-        }
-
-        return false;
+        }   return false;
 
 
-        // below is original attempt at this problem
+
+//        // below is another attempt #2 at this problem
+//        Integer length = input.length();
+//        Integer withoutIs = input.replace("is", "").length();
+//        Integer withoutNot = input.replace("not", "").length();
+//
+//        Integer howManyIs = (length - withoutIs) / 2;
+//        Integer howManyNot = (length - withoutNot) / 3;
+//
+//        if (howManyIs == howManyNot) {
+//            return true;
+//        }
+//
+//        return false;
+
+
+        // below is original attempt #1 at this problem
         // called removeString method from above to help solve
 
 
@@ -162,9 +161,12 @@ public class StringsAndThings {
         // or you could use input.length() - 1;
         // either will work fine. they are just different ways to say the same thing
         // we converted input to array, so they will be same length
+        // int i = 1 so we don't get an out of bounds exception, since we will be considering the elements both before and after i.
+        // cannot start at int i = 0 because if we compare to the one before it, it will not exist.
         for (int i = 1; i < array.length - 1; i++) {
 
             // created a variable for easier conditions in if statement
+            // although this isn't necessary
             char c = array[i];
 
             // you can use c here. or array[i] since they are equal things
@@ -174,7 +176,6 @@ public class StringsAndThings {
             }
 
         }
-
         return counter;
 
 
