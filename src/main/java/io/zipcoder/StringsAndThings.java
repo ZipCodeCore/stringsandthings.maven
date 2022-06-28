@@ -1,6 +1,10 @@
 package io.zipcoder;
 
 
+import java.util.ArrayList;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 /**
  * @author tariq
  */
@@ -11,11 +15,17 @@ public class StringsAndThings {
      * but not the 'y' in "yellow" (not case sensitive). We'll say that a y or z is at the end of a word if there is not an alphabetic
      * letter immediately following it. (Note: Character.isLetter(char) tests if a char is an alphabetic letter.)
      * example : countYZ("fez day"); // Should return 2
-     *           countYZ("day fez"); // Should return 2
-     *           countYZ("day fyyyz"); // Should return 2
+     * countYZ("day fez"); // Should return 2
+     * countYZ("day fyyyz"); // Should return 2
      */
-    public Integer countYZ(String input){
-        return null;
+    public int countYZ(String input) {
+        int count = 0;
+        Pattern regex = Pattern.compile("[yz](?!\\p{L})", Pattern.CASE_INSENSITIVE);
+        Matcher regexMatcher = regex.matcher(input);
+        while (regexMatcher.find()) {
+            count++;
+        }
+        return count;
     }
 
     /**
@@ -28,7 +38,8 @@ public class StringsAndThings {
      *           removeString("Hello there", "x") // Should return "Hello there"
      */
     public String removeString(String base, String remove){
-        return null;
+        String res = base.replaceAll("(?i)" + remove, "");
+        return res;
     }
 
     /**
@@ -40,7 +51,26 @@ public class StringsAndThings {
      *           containsEqualNumberOfIsAndNot("noisxxnotyynotxisi") // Should return true
      */
     public Boolean containsEqualNumberOfIsAndNot(String input){
-        return null;
+        String find01 = "is";
+        String find02 = "not";
+        int lastIndex01 = 0;
+        int lastIndex02 = 0;
+
+        ArrayList<String> arr = new ArrayList<>();
+
+        int count01 = 0;
+        int count02 = 0;
+        boolean equalCount = false;
+
+        while (input.contains(find02) && input.contains(find01)) {
+            input = input.replaceFirst(find02, "");
+            input = input.replaceFirst(find01, "");
+            count01++;
+            count02++;
+        }
+        System.out.println(count01);
+        System.out.println(count02);
+        return equalCount;
     }
 
     /**
