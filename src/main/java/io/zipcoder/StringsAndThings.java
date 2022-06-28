@@ -83,10 +83,17 @@ public class StringsAndThings {
      * Return true if all the g's in the given string are happy.
      * example : gHappy("xxggxx") // Should return  true
      * gHappy("xxgxx") // Should return  false
-     * gHappy("xxggyygxx") // Should return  false
+     * gHappy("xxggyygxx") // Should return true
      */
     public Boolean gIsHappy(String input) {
-        return null;
+        boolean outcome = false;
+        String gg = "gg";
+        for (int i=0;i<=input.length();i++) {
+            if (input.regionMatches(true, i, gg, 0, gg.length())) {
+                outcome = true;
+            }
+        }
+        return outcome;
     }
 
 
