@@ -59,8 +59,8 @@ public class StringsAndThings {
         String is = "is";
         String not = "not";
 
-        for (int i=0; i<=input.length()-1; i++) {
-            if (input.regionMatches(true,i,is, 0, is.length())) {
+        for (int i = 0; i <= input.length() - 1; i++) {
+            if (input.regionMatches(true, i, is, 0, is.length())) {
 //                System.out.println("found is");
                 isArrList.add("added");
             }
@@ -88,7 +88,7 @@ public class StringsAndThings {
     public Boolean gIsHappy(String input) {
         boolean outcome = false;
         String gg = "gg";
-        for (int i=0;i<=input.length();i++) {
+        for (int i = 0; i <= input.length(); i++) {
             if (input.regionMatches(true, i, gg, 0, gg.length())) {
                 outcome = true;
             }
@@ -105,6 +105,16 @@ public class StringsAndThings {
      * countTriple("a") // Should return 0
      */
     public Integer countTriple(String input) {
-        return null;
+        int len = input.length();
+        int count = 0;
+
+        for (int i = 0; i < len -2; i++) {
+            if ((i < len) &&
+                    input.charAt(i) == input.charAt(i + 1) &&
+                    input.charAt(i) == input.charAt(i +2)) {
+                count++;
+            }
+        }
+        return count;
     }
 }
