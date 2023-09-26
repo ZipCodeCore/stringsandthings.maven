@@ -63,6 +63,10 @@ You'll need to "pass" them all.
 (Wait, how do I run the tests? I'm glad you asked.  You can run the tests by right-clicking on the file `StringThingsTest.java` and selecting `Run 'StringThingsTest'`.)
 (Maybe you are starting to get this?)
 
+## Writing the code
+
+You need to write code in `StringThings.java` to make the tests pass.  You can do this by writing code in the methods that are already there.  You can also add new methods if you want to.  (You don't have to, but you can if you want to.)
+
 ## How to Submit
 
 ### Part 1 -  _Pushing_ local changes to remote repository
