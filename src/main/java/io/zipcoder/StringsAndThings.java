@@ -1,6 +1,7 @@
 package io.zipcoder;
 
 
+
 /**
  * @author tariq
  */
@@ -15,7 +16,20 @@ public class StringsAndThings {
      *           countYZ("day fyyyz"); // Should return 2
      */
     public Integer countYZ(String input){
-        return null;
+        int counter = 0;
+
+        String inputArray[] = input.split(" ");
+
+        for(String word : inputArray){
+
+            char item = word.charAt(word.length() - 1);
+
+            if(item == 'z' || item == 'y'){
+                counter ++;
+            }
+        }
+
+        return counter;
     }
 
     /**
@@ -28,7 +42,12 @@ public class StringsAndThings {
      *           removeString("Hello there", "x") // Should return "Hello there"
      */
     public String removeString(String base, String remove){
-        return null;
+
+        String result = "";
+
+        result = base.replace(remove, "");
+
+        return result;
     }
 
     /**
@@ -40,7 +59,22 @@ public class StringsAndThings {
      *           containsEqualNumberOfIsAndNot("noisxxnotyynotxisi") // Should return true
      */
     public Boolean containsEqualNumberOfIsAndNot(String input){
-        return null;
+    String is = "is";
+    int matchIs = 0;
+    String not = "not";
+    int matchNot = 0;
+
+        while(input.contains(is)){
+        input = input.replaceFirst(is, "-");
+        matchIs++;
+        }
+
+        while (input.contains(not)) {
+            input = input.replaceFirst(not, "-");
+            matchNot++;
+        }
+
+        return matchIs == matchNot;
     }
 
     /**
@@ -51,7 +85,13 @@ public class StringsAndThings {
      *           gHappy("xxggyygxx") // Should return  false
      */
     public Boolean gIsHappy(String input){
-        return null;
+        boolean happy = false;
+
+        if(input.contains("gg")){
+            happy = true;
+        }
+
+        return happy;
     }
 
 
@@ -63,6 +103,19 @@ public class StringsAndThings {
      *            countTriple("a") // Should return 0
      */
     public Integer countTriple(String input){
-        return null;
+        int index = 0;
+
+        for(int x = 0; x < input.length() - 1; x++){
+
+            if(input.length() < 3) {
+            index = 0;
+            }
+
+            if(input.charAt(x) == input.charAt(x + 1) && input.charAt(x) == input.charAt(x + 2)){
+                index++;
+            }
+        }
+
+        return index;
     }
 }
