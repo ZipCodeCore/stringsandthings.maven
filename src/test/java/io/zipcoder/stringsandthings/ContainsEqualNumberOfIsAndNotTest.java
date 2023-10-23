@@ -23,11 +23,13 @@ public class ContainsEqualNumberOfIsAndNotTest {
         Assert.assertFalse(actual);
     }
 
+
     @Test
     public void equalIsNotTest2(){
         Boolean actual = stringsAndThings.containsEqualNumberOfIsAndNot("This is notnot");
         Assert.assertTrue(actual);
     }
+
 
     @Test
     public void equalIsNotTest3(){
