@@ -15,7 +15,18 @@ public class StringsAndThings {
      *           countYZ("day fyyyz"); // Should return 2
      */
     public Integer countYZ(String input){
-        return null;
+        int letterCounter = 0;                                       // we made a counter for the loop
+        String[] words = input.split(" ");                    // made a new string array, called words. made up of the string 'input'. split up based on spaces
+        for (String w: words) {                                     // words = ["fez", "day"]
+            int n = w.length();                                     // made a new string called w. something with the array called words. for each value
+            if (w.charAt(n - 1) == 'Y' || w.charAt(n - 1) == 'Z') ; // of the array called words, we have a string called w. w is "fez", w is "day"
+            letterCounter++;                                        // made an integer called n that is set to the length of the string w.  (length of w is 3, for fez)
+        }                                                           // which comes from the values of the array called words
+                                                                    // if the character at the end of the string called w(the string "fez"), is equal to the char 'Y'
+                                                                    // or 'Z', increase the letter counter
+                                                                    // return the letter counter.
+
+        return letterCounter;
     }
 
     /**
@@ -27,7 +38,9 @@ public class StringsAndThings {
      *           removeString("Hello there", "e") //  Should return "Hllo thr"
      *           removeString("Hello there", "x") // Should return "Hello there"
      */
-    public String removeString(String base, String remove){
+    public String removeString(String base, String remove) {
+
+
         return null;
     }
 
