@@ -1,6 +1,10 @@
 package io.zipcoder;
 
 
+import java.sql.SQLOutput;
+import java.util.ArrayList;
+import java.util.Locale;
+
 /**
  * @author tariq
  */
@@ -14,10 +18,19 @@ public class StringsAndThings {
      *           countYZ("day fez"); // Should return 2
      *           countYZ("day fyyyz"); // Should return 2
      */
-    public Integer countYZ(String input){
-        return null;
-    }
+    public Integer countYZ(String input) {
+        int yZTotal = 0;
 
+        String[] inputSplit = input.split(" ");
+        //int length = inputSplit.length;
+        for (String s : inputSplit) {
+            if (s.endsWith("y") || s.endsWith("z")) {
+                yZTotal++;
+            }
+        }
+            return yZTotal;
+
+    }
     /**
      * Given two strings, base and remove, return a version of the base string where all instances of the remove string have
      * been removed (not case sensitive). You may assume that the remove string is length 1 or more.
@@ -28,8 +41,24 @@ public class StringsAndThings {
      *           removeString("Hello there", "x") // Should return "Hello there"
      */
     public String removeString(String base, String remove){
-        return null;
-    }
+        return base.replaceAll(remove, "");
+            
+        }
+
+
+        
+//        int baseIndex = base.indexOf(remove);
+//        int baselength = base.length();
+//        for (String remove: base) {
+//            String part1 = base.substring(0,baseIndex);
+//            String part2 = base.substring(baseIndex+1,baselength);
+//            newWord.append(part1);
+//            newWord.append(part2);
+//        }
+//
+//
+
+
 
     /**
      * Given a string, return true if the number of appearances of "is" anywhere in the string is equal
@@ -40,8 +69,27 @@ public class StringsAndThings {
      *           containsEqualNumberOfIsAndNot("noisxxnotyynotxisi") // Should return true
      */
     public Boolean containsEqualNumberOfIsAndNot(String input){
-        return null;
-    }
+        //        String[] isArray = input.split("is");
+//        String[] notArray = input.split("not");
+//        Integer isArrayLength = isArray.length;
+//        Integer notArrayLength = notArray.length;
+        //^^Does not pass Case 2 "This is notnot"
+
+
+        Integer numOfIs = 0;
+        Integer numOfNot = 0;
+
+        for (int i = 0; i < input.length()-3; i++) {
+
+            if (input.substring(i,i+2).equalsIgnoreCase("is")){
+                numOfIs++ ;
+            }
+            else if (input.substring(i,i+3).equalsIgnoreCase("not")){
+                numOfNot++ ;
+            }
+        }
+        return numOfIs.equals(numOfNot);
+    }  //Doesn't pass Case 1 "This is not"
 
     /**
      * We'll say that a lowercase 'g' in a string is "happy" if there is another 'g' immediately to its left or right.
@@ -51,7 +99,18 @@ public class StringsAndThings {
      *           gHappy("xxggyygxx") // Should return  false
      */
     public Boolean gIsHappy(String input){
-        return null;
+        boolean happyG = false;
+        for (int i = 1; i < input.length()-1; i++) {
+            if (input.charAt(i) == 'g')
+                if (input.charAt(i - 1) == 'g' ||  input.charAt(i+1) =='g') {
+                happyG = true;
+                } else if (input.charAt(i - 1) != 'g'|| input.charAt(i+1) != 'g') {
+                return false;
+            }
+
+        }
+        return happyG;
+
     }
 
 
@@ -63,6 +122,13 @@ public class StringsAndThings {
      *            countTriple("a") // Should return 0
      */
     public Integer countTriple(String input){
-        return null;
+        int countTrip = 0;
+        for (int i = 0; i <= input.length()-3 ; i++) {
+            if (input.charAt(i) == input.charAt(i+1) && input.charAt(i) ==input.charAt(i+2)){
+                countTrip++;
+            }
+
+        }
+        return countTrip;
     }
 }
