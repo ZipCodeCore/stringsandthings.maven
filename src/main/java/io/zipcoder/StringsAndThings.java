@@ -14,9 +14,25 @@ public class StringsAndThings {
      *           countYZ("day fez"); // Should return 2
      *           countYZ("day fyyyz"); // Should return 2
      */
-    public Integer countYZ(String input){
-        return null;
+    public Integer countYZ(String input) {
+        // convert to a string
+        String[] newInput = input.split(" ");
+            //start count at 0
+            int count = 0;
+            //Go through each element of the array
+            for(int i = 0; i < newInput.length; i++){
+                //String words is equal to element i
+                String word = newInput[i];
+                //lastChar is equal to the last words
+                char lastChar = word.charAt(word.length()-1);
+                if(lastChar == 'z' || lastChar == 'y'){
+                //if(newInput.charAt(newInput.length) == 'y' || newInput.charAt(newInput.length) == 'z'){
+                    count++;
+                }
+            }
+            return count;
     }
+
 
     /**
      * Given two strings, base and remove, return a version of the base string where all instances of the remove string have
@@ -28,7 +44,9 @@ public class StringsAndThings {
      *           removeString("Hello there", "x") // Should return "Hello there"
      */
     public String removeString(String base, String remove){
-        return null;
+        //Find the string that needs to be remove
+        String removedWords = base.replaceAll(remove,"");
+        return removedWords;
     }
 
     /**
@@ -40,7 +58,29 @@ public class StringsAndThings {
      *           containsEqualNumberOfIsAndNot("noisxxnotyynotxisi") // Should return true
      */
     public Boolean containsEqualNumberOfIsAndNot(String input){
-        return null;
+        // Count the number of times "is" is in the sentence
+        int is = countString(input,"is");
+        int not = countString(input, "not");
+
+        return is == not;
+        //same as above
+//        if(is == not){
+//            return true;
+//        }else{
+//            return false;
+//        }
+
+    }
+
+    public Integer countString(String input, String value){
+        int count = 0;
+        for(int i = 0; i < input.length();i++){
+            // i being where they will start from. first loop will start at 0, second loop start at index 1, etc
+            if(input.startsWith(value,i)){
+                count++;
+            }
+        }
+        return count;
     }
 
     /**
@@ -48,10 +88,49 @@ public class StringsAndThings {
      * Return true if all the g's in the given string are happy.
      * example : gHappy("xxggxx") // Should return  true
      *           gHappy("xxgxx") // Should return  false
-     *           gHappy("xxggyygxx") // Should return  false
+     *           gHappy("xxggyygxx") // Should return false
      */
-    public Boolean gIsHappy(String input){
-        return null;
+    public Boolean gIsHappy(String input) {
+        int index = 0;
+        //Find the index with the element g
+        while(true){
+            // find the index with the character g
+            index = input.indexOf('g', index);
+            //if the index is -1, it means there is no g making the statement false. get out of the loop
+            if(index == -1){
+                break;
+            }
+            //find the element at index index
+            char g = input.charAt(index);
+            //give the next index a variable
+            int nextIndex = index + 1;
+            //find the element at the next index to g
+            char twinG = input.charAt(nextIndex);
+            //if the character next to g is not g, return false
+            if (twinG != g) {
+                return false;
+            }
+            //after finding the g, we want to start looking for the next g which would be 2 index away from the previous g
+            index = index + 2;
+
+        }
+        return true;
+
+//        xxggxx
+//        for (int i = 1; i < input.length() - 1; i++) {
+//           //check if the current char is a g
+//            if(input.charAt(i) == 'g') {
+//                //check if the next or the previous character is g
+//                    if (input.charAt(i + 1) != 'g' && input.charAt(i - 1) != 'g') {
+//                        return false;
+//                    }
+//
+//            }
+//
+//
+//        }
+//
+//        return true;
     }
 
 
@@ -63,6 +142,14 @@ public class StringsAndThings {
      *            countTriple("a") // Should return 0
      */
     public Integer countTriple(String input){
-        return null;
+        int count = 0;
+        //if the element index == index + 1 ==index + 2, count++
+        for(int i= 0; i < input.length(); i++){
+            char letter = input.charAt(i);
+            if(letter == input.charAt(i+1) && letter == input.charAt(i+2)){
+              count++;
+            }
+        }
+        return count;
     }
 }
