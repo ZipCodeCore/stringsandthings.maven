@@ -1,6 +1,9 @@
 package io.zipcoder;
 
 
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 /**
  * @author tariq
  */
@@ -15,7 +18,31 @@ public class StringsAndThings {
      *           countYZ("day fyyyz"); // Should return 2
      */
     public Integer countYZ(String input){
-        return null;
+        int lenInput = input.length();
+
+        int count = 0;
+
+        input = input.toLowerCase();
+
+        for (int i = 0; i < lenInput; i++) {
+
+            if (input.charAt(i) == 'y' || input.charAt(i) == 'z') {
+
+                if (i < (lenInput - 1) && !Character.isLetter(input.charAt(i + 1))){
+                    count++;
+
+                } else if (i == (lenInput-1)) {
+
+                    count++;
+
+                }else {}
+
+            }
+
+        }
+
+        return count;
+
     }
 
     /**
@@ -28,7 +55,7 @@ public class StringsAndThings {
      *           removeString("Hello there", "x") // Should return "Hello there"
      */
     public String removeString(String base, String remove){
-        return null;
+        return base.replace(remove,"");
     }
 
     /**
@@ -40,7 +67,28 @@ public class StringsAndThings {
      *           containsEqualNumberOfIsAndNot("noisxxnotyynotxisi") // Should return true
      */
     public Boolean containsEqualNumberOfIsAndNot(String input){
-        return null;
+        /*
+
+        Test1 and Test2 should be reversed (Test1 should assert to false and Test2 should assert to true
+         */
+
+        Pattern wordIs = Pattern.compile("is");
+        Matcher match = wordIs.matcher(input);
+
+        int matchIs = 0;
+        int matchNot = 0;
+
+        while (match.find()) {
+            matchIs++;
+        }
+
+        Pattern wordNot = Pattern.compile("not");
+        Matcher match2 = wordNot.matcher(input);
+
+        while (match2.find()){
+            matchNot ++;
+        }
+        return matchIs == matchNot;
     }
 
     /**
@@ -48,11 +96,28 @@ public class StringsAndThings {
      * Return true if all the g's in the given string are happy.
      * example : gHappy("xxggxx") // Should return  true
      *           gHappy("xxgxx") // Should return  false
-     *           gHappy("xxggyygxx") // Should return  false
+     *           gHappy("xxggyygxx") // Should return  false  **** the test asserts true
      */
     public Boolean gIsHappy(String input){
-        return null;
+
+        int count = 0;
+        int inputLen = input.length();
+
+        for (int i = 0; i < inputLen; i++){
+
+            if (input.charAt(i) == 'g' && (input.indexOf(i) != input.indexOf(0) || input.indexOf(i) != input.lastIndexOf(input))){
+                if (input.charAt(i-1) == 'g' || input.charAt(i+1) == 'g'){
+                    // all g are happy
+                } else {
+
+                    // "xxggyygxxgg"
+                    count ++;
+                }
+            }
+        }
+        return (count == 0);
     }
+
 
 
     /**
@@ -63,6 +128,17 @@ public class StringsAndThings {
      *            countTriple("a") // Should return 0
      */
     public Integer countTriple(String input){
-        return null;
+
+        String [] lettersPassed = input.split("");  // put each letter into an array
+        int counter = 0;
+
+        // loop through each letter in the array and see if the next two match; upper limit is less 2
+        for (int i = 0; i < lettersPassed.length - 2; i++){
+
+            if (lettersPassed[i].equals(lettersPassed[i+1]) && lettersPassed[i].equals(lettersPassed[i+2])){
+                counter ++;
+            }
+        }
+        return counter;
     }
 }
