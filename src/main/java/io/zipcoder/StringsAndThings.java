@@ -15,7 +15,14 @@ public class StringsAndThings {
      *           countYZ("day fyyyz"); // Should return 2
      */
     public Integer countYZ(String input){
-        return null;
+        int countOfYZ = 0;
+        String[] inputToArrayOfWords = input.split(" ");
+        for (String word : inputToArrayOfWords) {
+            if (word.endsWith("y") || word.endsWith("z")) {
+                countOfYZ += 1;
+            }
+        }
+        return countOfYZ;
     }
 
     /**
@@ -28,7 +35,8 @@ public class StringsAndThings {
      *           removeString("Hello there", "x") // Should return "Hello there"
      */
     public String removeString(String base, String remove){
-        return null;
+        String newString = base.replaceAll(remove, "");
+        return newString;
     }
 
     /**
@@ -40,7 +48,28 @@ public class StringsAndThings {
      *           containsEqualNumberOfIsAndNot("noisxxnotyynotxisi") // Should return true
      */
     public Boolean containsEqualNumberOfIsAndNot(String input){
-        return null;
+        boolean isAppearsSameNumberOfTimesAsNot = true;
+        int isCount = 0;
+        int notCount = 0;
+        int numberOfIsIndex = 0;
+        int numberOfNotIndex = 0;
+        int numberOfIs = 0;
+        int numberOfNot = 0;
+        while ((numberOfIsIndex = input.indexOf("is", isCount)) != -1) {
+            isCount = numberOfIsIndex + 2;
+            numberOfIs++;
+        }
+        while ((numberOfNotIndex = input.indexOf("not", notCount)) != -1) {
+            notCount = numberOfNotIndex + 2;
+            numberOfNot++;
+        }
+        if (numberOfIs == numberOfNot) {
+         isAppearsSameNumberOfTimesAsNot = true;
+        }
+        else {
+            isAppearsSameNumberOfTimesAsNot = false;
+        }
+        return isAppearsSameNumberOfTimesAsNot;
     }
 
     /**
@@ -51,7 +80,20 @@ public class StringsAndThings {
      *           gHappy("xxggyygxx") // Should return  false
      */
     public Boolean gIsHappy(String input){
-        return null;
+        boolean gIsHappy = false;
+        char[] inputToCharArray = input.toCharArray();
+        for (int i = 1; i < inputToCharArray.length - 1; i++) {
+             if (inputToCharArray[i] == 'g' && (inputToCharArray[i - 1] == 'g' || inputToCharArray[i + 1] == 'g')) {
+                 gIsHappy = true;
+             }
+             else if (inputToCharArray[i] == 'g' && (inputToCharArray[i - 1] != 'g' || inputToCharArray[i + 1] != 'g')) {
+                 gIsHappy = false;
+             }
+             else if (inputToCharArray[0] == 'g' && inputToCharArray[1] == 'g') {
+                 gIsHappy = true;
+             }
+        }
+        return gIsHappy;
     }
 
 
@@ -62,7 +104,14 @@ public class StringsAndThings {
      *            countTriple("xxxabyyyycd") // Should return 3
      *            countTriple("a") // Should return 0
      */
-    public Integer countTriple(String input){
-        return null;
+    public Integer countTriple(String input) {
+        int numberOfTriples = 0;
+        char[] inputToArray = input.toCharArray();
+        for (int i = 0; i < inputToArray.length - 2; i++) {
+            if (inputToArray[i] == inputToArray[i + 1] && inputToArray[i] == inputToArray[i + 2]) {
+                numberOfTriples += 1;
+            }
+        }
+        return numberOfTriples;
     }
 }
