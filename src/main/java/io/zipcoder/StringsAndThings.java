@@ -1,6 +1,8 @@
 package io.zipcoder;
 
 
+import java.util.Locale;
+
 /**
  * @author tariq
  */
@@ -14,8 +16,23 @@ public class StringsAndThings {
      *           countYZ("day fez"); // Should return 2
      *           countYZ("day fyyyz"); // Should return 2
      */
-    public Integer countYZ(String input){
-        return null;
+    public Integer countYZ(String input) {
+        Integer counter = 0; //counter for loop
+        String[] wordsArray = input.toLowerCase().split(" "); //split string up into words by delimiter "space", ignoring case
+
+        //for the length of the array, check the last letter in each individual word of the wordsArray and compare to y or z
+        //if either y or z are found, increase the counter by 1
+        for (int i = 0; i < wordsArray.length; i++) {
+            String wordyz = wordsArray[i];
+            int len = wordyz.length()-1;
+
+            if (Character.isLetter(wordyz.charAt(len))) {
+                if (wordyz.charAt(len) == 'y' || (wordyz.charAt(len) == 'z')) {
+                    counter++;
+                }
+            }
+        }
+        return counter;
     }
 
     /**
@@ -28,7 +45,8 @@ public class StringsAndThings {
      *           removeString("Hello there", "x") // Should return "Hello there"
      */
     public String removeString(String base, String remove){
-        return null;
+
+        return base.replaceAll(remove, ""); //replaces remove string with empty string
     }
 
     /**
@@ -40,7 +58,27 @@ public class StringsAndThings {
      *           containsEqualNumberOfIsAndNot("noisxxnotyynotxisi") // Should return true
      */
     public Boolean containsEqualNumberOfIsAndNot(String input){
-        return null;
+        //convert string to a character array
+        char[] isAndNot = input.toLowerCase().toCharArray();
+
+        //counters for 'is' and 'not' to later compare for Boolean
+        Integer isCount = 0;
+        Integer notCount = 0;
+
+        //check to see if sequence of chars 'i' and 's' and if so, increase isCount
+        for (int i = 0; i < isAndNot.length-1; i++) {
+            if (input.charAt(i) == 'i' && input.charAt(i + 1) == 's') {
+                isCount++;
+            }
+        }
+        //check to see if sequence of chars 'n', 'o', 't', and if so, increase notCount
+        for (int i = 0; i < isAndNot.length-2; i++) {
+            if (input.charAt(i) == 'n' && input.charAt(i+1) == 'o' && input.charAt(i+2) == 't') {
+                notCount++;
+            }
+        }
+
+        return isCount.equals(notCount);
     }
 
     /**
@@ -50,8 +88,15 @@ public class StringsAndThings {
      *           gHappy("xxgxx") // Should return  false
      *           gHappy("xxggyygxx") // Should return  false
      */
-    public Boolean gIsHappy(String input){
-        return null;
+    public Boolean gIsHappy(String input) {
+
+        for (int i = 1; i < input.length()-1; i++) {
+            if((input.charAt(i) == 'g' && input.charAt(i+1) != 'g')
+                    && (input.charAt(i) == 'g' && input.charAt(i-1) != 'g')) {
+                return false;
+            }
+        }
+        return true;
     }
 
 
@@ -63,6 +108,14 @@ public class StringsAndThings {
      *            countTriple("a") // Should return 0
      */
     public Integer countTriple(String input){
-        return null;
+        Integer counter = 0;
+        for (int i = 1; i < input.length()-1; i++) {
+
+            if(input.charAt(i) == input.charAt(i-1)
+                    && input.charAt(i) == input.charAt(i+1)) {
+                counter++;
+            }
+        }
+        return counter;
     }
 }
