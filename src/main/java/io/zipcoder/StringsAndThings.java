@@ -4,7 +4,7 @@ package io.zipcoder;
 /**
  * @author tariq
  */
-public class StringsAndThings {
+public class StringsAndThings<counter> {
 
     /**
      * Given a string, count the number of words ending in 'y' or 'z' -- so the 'y' in "heavy" and the 'z' in "fez" count,
@@ -15,8 +15,24 @@ public class StringsAndThings {
      *           countYZ("day fyyyz"); // Should return 2
      */
     public Integer countYZ(String input){
-        return null;
+       Integer counter = 0;
+       int howLong = input.length();
+       input = input.toLowerCase();
+
+       for(int i = 0; i < howLong; i++) {
+           if (input.charAt(i) == 'y' || input.charAt(i) == 'z') {
+               if(i < howLong-1 && !Character.isLetter(input.charAt(i + 1))) {
+                   counter++;
+               } else if (i == howLong-1) {
+                   counter++;
+               }
+           }
+       }
+       return counter;
+
     }
+
+
 
     /**
      * Given two strings, base and remove, return a version of the base string where all instances of the remove string have
@@ -28,7 +44,17 @@ public class StringsAndThings {
      *           removeString("Hello there", "x") // Should return "Hello there"
      */
     public String removeString(String base, String remove){
-        return null;
+
+
+        /* (int i = 0; i < base.length(); i++) {
+            for (int j = 0; j < remove.length(); j++) {
+                if (base.charAt(i) == remove.charAt(0)) {
+
+                }
+            }
+        }*/
+
+        return base.replaceAll(remove,"");
     }
 
     /**
@@ -40,7 +66,28 @@ public class StringsAndThings {
      *           containsEqualNumberOfIsAndNot("noisxxnotyynotxisi") // Should return true
      */
     public Boolean containsEqualNumberOfIsAndNot(String input){
-        return null;
+        int isCount = 0;
+        int notCount = 0;
+        for (int i = 0; i < input.length()-1; i++){
+
+            if (input.substring(i, i+2).equals("is")){
+                isCount++;
+            } else if ( i+3 <= input.length()){
+                  if  (input.substring(i, i+3).equals("not")) {
+                      notCount++;
+                  }
+            }
+        }
+
+        if (isCount ==  notCount) {
+            return true;
+        }else {
+            return false;
+        }
+
+
+
+
     }
 
     /**
@@ -51,7 +98,12 @@ public class StringsAndThings {
      *           gHappy("xxggyygxx") // Should return  false
      */
     public Boolean gIsHappy(String input){
-        return null;
+        for (int i = 0; i < input.length(); i++){
+            if (i == i) {
+                return true;
+            }
+        }
+        return false;
     }
 
 
@@ -63,6 +115,13 @@ public class StringsAndThings {
      *            countTriple("a") // Should return 0
      */
     public Integer countTriple(String input){
-        return null;
+        Integer counter = 0;
+        for (int i = 0; i < input.length() - 2; i++){
+            char tmp = input.charAt(i);
+            if (tmp == input.charAt(i+1) && tmp == input.charAt(i+2)){
+                counter++;
+            }
+        }
+        return counter;
     }
 }
