@@ -26,7 +26,7 @@ public class GIsHappyTest {
 
     @Test
     public void gIsHappyTest2(){
-        Boolean actual = stringsAndThings.gIsHappy("xxgxx");
+        Boolean actual = stringsAndThings.gIsHappy("gxxgxx");
         Assert.assertFalse(actual);
     }
 
