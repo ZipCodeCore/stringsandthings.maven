@@ -41,4 +41,22 @@ public class CountYZTest {
         Integer actual = stringsAndThings.countYZ(input);
         Assert.assertEquals(expected, actual);
     }
+
+    @Test
+    public void countYZTest4 (){
+        String input = "freaky friendly friday ";
+        Integer expected = 3;
+        Integer actual = stringsAndThings.countYZ(input);
+        Assert.assertEquals(expected, actual);
+
+    }
+
+    @Test
+    public void countYZTest5 (){
+        String input = "day bay way hey bazz fizz buzz ditz";
+        Integer expected = 8;
+        Integer actual = stringsAndThings.countYZ(input);
+        Assert.assertEquals(expected, actual);
+
+    }
 }
