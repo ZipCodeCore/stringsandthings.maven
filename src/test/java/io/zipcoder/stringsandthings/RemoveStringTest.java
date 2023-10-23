@@ -21,21 +21,21 @@ public class RemoveStringTest {
     @Test
     public void withoutStringTest1(){
         String expected = "He there";
-        String actual = stringsAndThings.removeString("Hello there", "llo");
+        String actual = (String) stringsAndThings.removeString("Hello there", "llo");
         Assert.assertEquals(expected, actual);
     }
 
     @Test
     public void withoutStringTest2(){
         String expected = "Hllo thr";
-        String actual = stringsAndThings.removeString("Hello there", "e");
+        String actual = (String) stringsAndThings.removeString("Hello there", "e");
         Assert.assertEquals(expected, actual);
     }
 
     @Test
     public void withoutStringTest3(){
         String expected = "Hello there";
-        String actual = stringsAndThings.removeString("Hello there", "x");
+        String actual = (String) stringsAndThings.removeString("Hello there", "x");
         Assert.assertEquals(expected, actual);
     }
 
