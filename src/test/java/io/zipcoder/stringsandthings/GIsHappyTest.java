@@ -8,32 +8,33 @@ import org.junit.Test;
 /**
  * @author leon on 29/01/2019.
  */
-public class GIsHappyTest {
+ public class GIsHappyTest {
 
     private StringsAndThings stringsAndThings;
 
     @Before
-    public void setup(){
+    public void setup() {
         stringsAndThings = new StringsAndThings();
     }
 
 
     @Test
-    public void gIsHappyTest1(){
+    public void gIsHappyTest1() {
         Boolean actual = stringsAndThings.gIsHappy("xxggxx");
         Assert.assertTrue(actual);
     }
 
     @Test
-    public void gIsHappyTest2(){
+    public void gIsHappyTest2() {
         Boolean actual = stringsAndThings.gIsHappy("xxgxx");
         Assert.assertFalse(actual);
     }
 
     @Test
-    public void gIsHappyTest3(){
+    public void gIsHappyTest3() {
         Boolean actual = stringsAndThings.gIsHappy("xxggyygxx");
         Assert.assertTrue(actual);
-    }
 
+
+    }
 }
