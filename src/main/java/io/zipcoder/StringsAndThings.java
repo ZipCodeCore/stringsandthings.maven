@@ -1,6 +1,9 @@
 package io.zipcoder;
 
 
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 /**
  * @author tariq
  */
@@ -15,8 +18,15 @@ public class StringsAndThings {
      *           countYZ("day fyyyz"); // Should return 2
      */
     public Integer countYZ(String input){
-        return null;
-    }
+        int result = 0;
+        for (int i = 0; i < input.length(); i++) {
+            if (input.charAt(i) == 'y' || input.charAt(i) == 'z') {
+                result += 1;
+            }
+        }
+        return result;
+    } // This one needs refinement - only pass two cases - need more work in the if statement
+      // This method counts all (given) letters inside of a string
 
     /**
      * Given two strings, base and remove, return a version of the base string where all instances of the remove string have
@@ -28,7 +38,9 @@ public class StringsAndThings {
      *           removeString("Hello there", "x") // Should return "Hello there"
      */
     public String removeString(String base, String remove){
-        return null;
+        String result = base.replace(remove, "");
+
+        return result;
     }
 
     /**
@@ -40,8 +52,31 @@ public class StringsAndThings {
      *           containsEqualNumberOfIsAndNot("noisxxnotyynotxisi") // Should return true
      */
     public Boolean containsEqualNumberOfIsAndNot(String input){
-        return null;
+
+        Integer resultIs = 0;
+        Integer resultNot = 0;
+        for (int i = 0; i < input.length() - 1; i++) {
+            char is = 'i';
+            char is2 = 's';
+            char not = 'n';
+            char not1 = 'o';
+            char not2 = 't';
+            if (input.charAt(i) == is && input.charAt(i + 1) == is2) {
+                resultIs++;
+            }
+            if (input.charAt(i) == not && input.charAt(i + 1) == not1 && input.charAt(i + 2) == not2) {
+                resultNot++;
+            }
+        }
+        if (resultIs.equals(resultNot)) {
+            return true;
+        }
+        return false;
     }
+    // This current state of code (input.matches(String) returns test 2 & 3
+    // Previous state of code (input.contains(String) returns test 1
+    // Interesting...
+    // But!! If I use input.charAt(i) and type out variables for each letter...I pass 1 and 2 but not 3
 
     /**
      * We'll say that a lowercase 'g' in a string is "happy" if there is another 'g' immediately to its left or right.
@@ -51,7 +86,11 @@ public class StringsAndThings {
      *           gHappy("xxggyygxx") // Should return  false
      */
     public Boolean gIsHappy(String input){
-        return null;
+        String checkValue = "gg";
+        if(!input.contains(checkValue)) {
+         return false;
+        }
+        return true;
     }
 
 
@@ -63,6 +102,14 @@ public class StringsAndThings {
      *            countTriple("a") // Should return 0
      */
     public Integer countTriple(String input){
-        return null;
+        input.toLowerCase();
+        int result = 0;
+        for (int i = 0; i < input.length() -2; i++)
+        {
+            char possibleSeq = input.charAt(i);
+            if (possibleSeq == input.charAt(i+1) && possibleSeq == input.charAt(i+2))
+                result++;
+        }
+        return result;
     }
 }
