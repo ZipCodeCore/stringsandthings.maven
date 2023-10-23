@@ -25,6 +25,7 @@ public class CountYZTest {
         Assert.assertEquals(expected, actual);
     }
 
+
     @Test
     public void countYZTest2(){
         String input = "day fez";
