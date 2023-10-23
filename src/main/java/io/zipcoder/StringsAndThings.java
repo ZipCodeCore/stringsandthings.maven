@@ -1,6 +1,12 @@
 package io.zipcoder;
 
 
+import com.sun.deploy.util.StringUtils;
+import com.sun.org.apache.xerces.internal.impl.xpath.regex.Match;
+
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 /**
  * @author tariq
  */
@@ -14,10 +20,14 @@ public class StringsAndThings {
      *           countYZ("day fez"); // Should return 2
      *           countYZ("day fyyyz"); // Should return 2
      */
+    // WORKING
     public Integer countYZ(String input){
-        return null;
+        Matcher m = Pattern.compile("[yz]\\b").matcher(input);
+        int counter = 0;
+        while (m.find())
+            counter++;
+        return counter;
     }
-
     /**
      * Given two strings, base and remove, return a version of the base string where all instances of the remove string have
      * been removed (not case sensitive). You may assume that the remove string is length 1 or more.
@@ -27,11 +37,13 @@ public class StringsAndThings {
      *           removeString("Hello there", "e") //  Should return "Hllo thr"
      *           removeString("Hello there", "x") // Should return "Hello there"
      */
-    public String removeString(String base, String remove){
-        return null;
-    }
+    //WORKING
+        public String removeString(String base, String remove){
+            String replace = base.replace(remove, "");
+            return replace;
+        }
 
-    /**
+    /*
      * Given a string, return true if the number of appearances of "is" anywhere in the string is equal
      * to the number of appearances of "not" anywhere in the string (case sensitive)
      *
@@ -39,8 +51,25 @@ public class StringsAndThings {
      *           containsEqualNumberOfIsAndNot("This is notnot") // Should return true
      *           containsEqualNumberOfIsAndNot("noisxxnotyynotxisi") // Should return true
      */
+    // WORKING
     public Boolean containsEqualNumberOfIsAndNot(String input){
-        return null;
+        Matcher isMatch = Pattern.compile("is").matcher(input);
+        Matcher notMatch = Pattern.compile("not").matcher(input);
+        Boolean equalOrNot;
+        int counter = 0;
+        while (isMatch.find())
+           counter++;
+        int isCount = counter;
+        counter = 0;
+        while (notMatch.find())
+            counter++;
+        int notCount = counter;
+        if (isCount == notCount) {
+            equalOrNot = true;
+        } else {
+            equalOrNot = false;
+        }
+        return equalOrNot;
     }
 
     /**
@@ -50,8 +79,14 @@ public class StringsAndThings {
      *           gHappy("xxgxx") // Should return  false
      *           gHappy("xxggyygxx") // Should return  false
      */
+    // WORKING
     public Boolean gIsHappy(String input){
-        return null;
+        Boolean happyG = false;
+        Matcher gDawg = Pattern.compile("gg").matcher(input);
+        if (gDawg.find()) {
+            happyG = true;
+        }
+        return happyG;
     }
 
 
@@ -62,7 +97,15 @@ public class StringsAndThings {
      *            countTriple("xxxabyyyycd") // Should return 3
      *            countTriple("a") // Should return 0
      */
+    // WORKING
     public Integer countTriple(String input){
-        return null;
+        int counter = 0;
+        int strLength = input.length();
+        for (int i = 0; i < strLength - 2; i++) {
+            char tempChar = input.charAt(i);
+            if (tempChar == input.charAt(i + 1) && tempChar == input.charAt(i + 2))
+                counter++;
+        }
+        return counter;
     }
 }
