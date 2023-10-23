@@ -1,6 +1,8 @@
 package io.zipcoder;
 
 
+import com.sun.deploy.util.StringUtils;
+
 /**
  * @author tariq
  */
@@ -15,7 +17,21 @@ public class StringsAndThings {
      *           countYZ("day fyyyz"); // Should return 2
      */
     public Integer countYZ(String input){
-        return null;
+        int counter=0;
+        input+=" ";
+            for(int i=0;i<input.length();i++){
+                if(input.charAt(i)==' ')
+                {
+                    char condition=input.charAt(i-1);
+                    if(condition=='y' || condition=='Y'
+                      || condition=='z' || condition=='Z')
+                    {
+                        counter++;
+
+                    }
+                }
+            }
+            return counter;
     }
 
     /**
@@ -28,8 +44,10 @@ public class StringsAndThings {
      *           removeString("Hello there", "x") // Should return "Hello there"
      */
     public String removeString(String base, String remove){
-        return null;
-    }
+    //"(?i)" is given to deal with the case insenstive
+    //This is called in the front of the regular expression.
+            return base.replaceAll("(?i)"+remove, "");
+        }
 
     /**
      * Given a string, return true if the number of appearances of "is" anywhere in the string is equal
@@ -40,7 +58,17 @@ public class StringsAndThings {
      *           containsEqualNumberOfIsAndNot("noisxxnotyynotxisi") // Should return true
      */
     public Boolean containsEqualNumberOfIsAndNot(String input){
-        return null;
+        int count1=0;
+        int count2=1;
+        if(input.toLowerCase().contains("is") &&input.toLowerCase().contains("not")){
+            //The split method returns an array of matching string parts. So basically it's splitting a string
+            // with the substring that we want to find and check how many array elements it has returned.
+            count1 = ( input.split("is", -1).length ) - 1;
+            count2 = ( input.split("not", -1).length ) - 1;
+        }
+        if (count1==count2)
+        return true;
+        else return false;
     }
 
     /**
@@ -51,8 +79,15 @@ public class StringsAndThings {
      *           gHappy("xxggyygxx") // Should return  false
      */
     public Boolean gIsHappy(String input){
-        return null;
-    }
+        for(int i=0;i<input.length();i++){
+            if (input.charAt(i)==('g')) {
+                if(input.charAt(i-1)=='g' || input.charAt(i+1)=='g'){
+                    return true;
+                }
+            }
+            }
+        return false;
+        }
 
 
     /**
@@ -63,6 +98,20 @@ public class StringsAndThings {
      *            countTriple("a") // Should return 0
      */
     public Integer countTriple(String input){
-        return null;
+        int totalCount=0;
+        int occurence=0;
+        for(int i=0;i<input.length();i++)
+        {
+            for (int j=i;j<input.length();j++)
+            {
+                if (input.charAt(j) == input.charAt(i)) {
+                    occurence++;
+                }
+            }
+            if(occurence>=3) {
+                totalCount=1+(occurence%3);
+            }
+        }
+        return totalCount;
     }
 }
